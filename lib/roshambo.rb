@@ -1,22 +1,22 @@
 class String
-  define_method(:beats?) do |player_one_hand|
-    TIE = 'tie'
-    WIN = 'win'
-    LOSE = 'lose'
+  TIE = 'Tie'
+  WIN = 'Win'
+  LOSS = 'Loss'
+  define_method(:beats?) do |player_two_hand|
+
     hands = {"rock"     => {"rock"     => TIE,
                             "scissors" => WIN,
-                            "paper"    => LOSE},
-             "scissors" => {"rock"     => LOSE,
+                            "paper"    => LOSS},
+             "scissors" => {"rock"     => LOSS,
                             "scissors" => TIE,
                             "paper"    => WIN},
              "paper"    => {"rock"     => WIN,
-                            "scissors" => LOSE,
+                            "scissors" => LOSS,
                             "paper"    => TIE}}
 
-    result = hands.fetch(self).fetch(player_one_hand)
+    output = "Player 1's hand '#{self}' against Player 2's hand '#{player_two_hand}' "
+    result = hands.fetch(self).fetch(player_two_hand)
 
-    result.eql?(WIN)
-
-
+    return output.concat("results in a #{result}!")
   end
 end
