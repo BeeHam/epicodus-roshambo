@@ -15,8 +15,12 @@ class String
                             "paper"    => TIE}}
 
     output = "Player 1's hand '#{self}' against Player 2's hand '#{player_two_hand}' "
-    result = hands.fetch(self).fetch(player_two_hand)
 
-    return output.concat("results in a #{result}!")
+    if !hands.include?(self) || !hands.include?(player_two_hand)
+      output = "A player has entered invalid input, please try again"
+    else
+      result = hands.fetch(self).fetch(player_two_hand)
+      output.concat("results in a #{result}!")
+    end
   end
 end
