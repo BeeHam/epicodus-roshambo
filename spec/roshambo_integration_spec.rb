@@ -11,4 +11,10 @@ describe('the roshambo path', {:type => :feature}) do
     click_button('Submit')
     expect(page).to have_content('Tie')
   end
+
+  it('returns players to home page', {:type => :feature}) do
+    visit('/roshambo?player_one_hand=rock&player_two_hand=shafhsd')
+    click_link('Return Home')
+    expect(page).to have_content("Let's play Roshambo!")
+  end
 end
